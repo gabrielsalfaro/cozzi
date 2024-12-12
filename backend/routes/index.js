@@ -17,4 +17,8 @@ router.get("/api/csrf/restore", (req, res) => {
     });
   });
 
+// prefix API routes
+const apiRouter = require('./api');
+router.use('/api', apiRouter);
+
 module.exports = router;
