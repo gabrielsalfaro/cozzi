@@ -1,0 +1,38 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "dbmigrate": "npx dotenv sequelize db:migrate",
+    "dbseed": "npx dotenv sequelize db:seed:all",
+    "dbseedundo": "npx dotenv sequelize db:seed:undo:all ",
+    "migrateundo": "npx dotenv sequelize db:migrate:undo:all",
+    "test": "DB_FILE=test/test.db mocha --timeout 5000"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "csurf": "^1.11.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-async-errors": "^3.1.1",
+    "helmet": "^8.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "per-env": "^1.0.2",
+    "pg": "^8.13.1",
+    "sequelize": "^6.37.5",
+    "sequelize-cli": "^6.6.2"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^7.4.4",
+    "nodemon": "^3.1.7",
+    "sqlite3": "^5.1.7"
+  }
+}
