@@ -3,13 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node app.js",
-    "dev": "nodemon app.js",
-    "dbmigrate": "npx dotenv sequelize db:migrate",
-    "dbseed": "npx dotenv sequelize db:seed:all",
-    "dbseedundo": "npx dotenv sequelize db:seed:undo:all ",
-    "migrateundo": "npx dotenv sequelize db:migrate:undo:all",
-    "test": "DB_FILE=test/test.db mocha --timeout 5000"
+      "sequelize": "sequelize",
+      "sequelize-cli": "sequelize-cli",
+      "start": "per-env",
+      "start:development": "nodemon ./bin/www",
+      "start:production": "node ./bin/www",
+      "build": "node psql-setup-script.js"
   },
   "keywords": [],
   "author": "",
