@@ -1,4 +1,4 @@
-# Cozzi
+# Cozzi API
 
 ## Database Schema Design
 
