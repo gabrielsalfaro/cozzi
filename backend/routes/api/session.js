@@ -1,5 +1,4 @@
 // backend/routes/api/session.js
-// backend/routes/api/session.js
 const express = require('express');
 const { Op } = require('sequelize');
 const bcrypt = require('bcryptjs');
@@ -23,6 +22,30 @@ const validateLogin = [
       .withMessage('Please provide a password.'),
     handleValidationErrors
 ];
+
+// Restore session user
+router.get(
+  '/',
+  restoreUser,
+  (req, res) => {
+    const { user } = req;
+    
+    if (user) {
+      const safeUser = {
+        id: user.id,
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        username: user.username,
+      };
+      return res.status(200).json({
+        user: safeUser,
+      });
+    } else {
+      return res.status(200).json({ user: null });
+    }
+  }
+);
 
 // Log in
 router.post(
@@ -57,6 +80,7 @@ router.post(
       await setTokenCookie(res, safeUser);
   
       return res.json({
+        
         user: safeUser
       });
     }
@@ -77,8 +101,11 @@ router.get(
     (req, res) => {
       const { user } = req;
       if (user) {
+        res.status(200);
         const safeUser = {
           id: user.id,
+          firstName: user.firstName,
+          lastName: user.lastName,
           email: user.email,
           username: user.username,
         };
